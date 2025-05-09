@@ -1,0 +1,71 @@
+import Image from "next/image";
+import { StarIcon } from "@/icons";
+import { Typography } from "@/components/core/Typography";
+import { toTitleCase } from "@/lib/toTitleCase";
+
+export function UserCard() {
+  const userData = {
+    picture: null,
+    name: "John",
+    username: "Doe",
+    tag: "johndoe",
+    role: "household",
+  };
+
+  const householdData = {
+    reviews: [
+      { rating: 4 },
+      { rating: 5 },
+      { rating: 3 },
+    ],
+  };
+
+  const averageRating =
+    householdData.reviews.length > 0
+      ? householdData.reviews.reduce((acc, review) => acc + review.rating, 0) /
+        householdData.reviews.length
+      : 0;
+
+  return (
+    <div className="flex items-start gap-4">
+      <Image
+        priority
+        src={
+          userData.picture ||
+          "https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"
+        }
+        alt="avatar"
+        width={72}
+        height={72}
+        className="rounded-full"
+      />
+      <div className="grid gap-2">
+        <div className="flex items-center gap-3">
+          <Typography variant="24px/800/32.78px" className="text-white-1">
+            {userData.name} {userData.username}
+          </Typography>
+          <Typography variant="14px/500/19.12px" className="text-white-1">
+            @{userData.tag}
+          </Typography>
+        </div>
+        <div className="flex items-center gap-2 border border-[#FFFFFF1A] rounded-full py-1.5 px-3 w-fit">
+          <Typography variant="14px/400/21px" className="text-white-1">
+            {toTitleCase(userData.role)}
+          </Typography>
+          <Typography variant="14px/400/21px" className="text-white-1">
+            •
+          </Typography>
+          <div className="flex items-center">
+            <StarIcon />
+            <Typography variant="14px/400/21px" className="text-white-1">
+              {averageRating.toFixed(1)}
+            </Typography>
+            <Typography variant="14px/400/21px" className="text-white-1">
+              ({householdData.reviews.length})
+            </Typography>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

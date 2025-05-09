@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  font-family: var(--font-manrope);
+  box-sizing: border-box;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.autosize {
+  field-sizing: content;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: #e7e8e9;
+  border-radius: 4px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body:has(.mob-menu-open) {
+  overflow: hidden;
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.rti--container {
+  background-color: #f8f8f8 !important;          
+  border: 1px solid #e5e7eb !important;       
+  color: #111827 !important;                      
+  border-radius: 0.5rem !important;             
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important; 
+  --rti-tag: #e0f2fe !important;                  
+  --rti-tag-remove: #ef4444 !important;           
+  --rti-tag-padding: 0.25rem 0.5rem !important;
+  --rti-s: 0.5rem !important;
+
+}
+.rti--container:focus-within {
+  outline: 2px solid #FF7125 !important;        
+  border-color: transparent !important;         
+}
+
+.rti--container input::placeholder {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  color: #9ca3af !important;
+}
+
+.rti--input {
+  width: 100% !important;
+  height: 30px !important;
+  background-color: #f8f8f8 !important;          
+
+}
+.rti--tag{
+  background-color: #FFD5BE !important; 
+}
